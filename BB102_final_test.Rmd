@@ -26,7 +26,7 @@ head(lvr_prices,10)
 
 ```{r}
 #(4) 請篩選出
-#  1. city_land_type為住宅用
+#  1. city_land_type 為住宅用
 #  2. total_price > 0
 #  3. building_sqmeter > 0
 #  4. finish_ymd 非空值
@@ -34,7 +34,7 @@ head(lvr_prices,10)
 house=lvr_prices[lvr_prices$city_land_type =='住' &
                  lvr_prices$total_price >0 & 
                  lvr_prices$building_sqmeter > 0 &
-                 lvr_prices$finish_ymd!='',]
+                 lvr_prices$finish_ymd != '',]
 
 ```
 
@@ -69,7 +69,7 @@ tapply(house$price_per_sqmeter,house$area,function(e){list('mean'=mean(e),'media
 #(9) 請使用house資料,利用ggplot2的facet_wrap函數繪製各行政區房屋每平方米價格(price_per_sqmeter)的直方圖 [8分]
 library(ggplot2)
 g <- ggplot(house,aes(x=area))
-g+ geom_histogram(color=black)+facet_wrap(~area)
+g+ geom_histogram(fill='block')+facet_wrap(~area)
 
 ```
 
@@ -89,7 +89,7 @@ house$building_age
 #     存回house變數中 [5分]
 setwd('D:/R_workspace/riii/')
 load('final/house_danger.RData')
-merge(x=house,y=house_danger,by=house$Unnamed,all.x=T)
+merge(x=house,y=house_danger,all.x=T)
 ```
 
 ```{r}
@@ -97,6 +97,7 @@ merge(x=house,y=house_danger,by=house$Unnamed,all.x=T)
 #     將訓練集資料存在trainset變數中，
 #     將測試集資料存在testset變數中。 [5分]
 set.seed(1206)
+
 
 ```
 
