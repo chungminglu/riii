@@ -64,7 +64,7 @@ hc2=hclust(dist(iris[,-5], method="euclidean"), method="ward.D2")
 plot(hc2, hang =-0.01, cex=0.7)
 ```
 
-## cutree
+## cutreefike
 ```{R}
 fit =cutree(hc, k =4)
 fit
